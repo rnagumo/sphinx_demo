@@ -68,6 +68,18 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 ## 1.3 rstファイルの作成
 
+ドキュメントの構成を表すrstファイルを`docs/source/`内に作成する．以下で，一つ目の引数はrstファイルの出力先を，二つ目の引数はPythonパッケージのフォルダを表す．
+
 ```bash
 ~/sphinx_demo/docs$ sphinx-apidoc -f -o ./source/ ../proj/
 ```
+
+## 1.4 htmlファイルの作成
+
+上述のコマンドで生成されたrstファイルを使い，htmlファイルを出力する．用意されているmake.batファイルを使用する．
+
+```bash
+~/sphinx_demo/docs$ make html
+```
+
+## 2. GitHubへの登録
