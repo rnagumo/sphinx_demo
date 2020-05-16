@@ -36,7 +36,7 @@ pip install sphinx sphinx_rtd_theme
 
 ## 1.3 conf.pyの書き換え
 
-`docs/source/conf.py`内を書き換える．書き換える点は三箇所ある．
+`docs/source/conf.py`内を書き換える．書き換える点は4箇所ある．
 
 ### 1.3.1 Path configuration
 
@@ -64,6 +64,15 @@ rtd themeと呼ばれるものが広く使われており，それをインポ�
 import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+```
+
+### 1.3.4 Master doctree
+
+Read the docsでページを表示する際にトップページとなるファイル名を変更する．
+
+```python
+# The master toctree document.
+master_doc = 'index'
 ```
 
 ## 1.4 rstファイルの作成
