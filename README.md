@@ -91,9 +91,31 @@ master_doc = 'index'
 ~/sphinx_demo/docs$ make html
 ```
 
+## 1.5 configファイルの作成
+
+> Read the Docsを使う場合に必要．
+
+Read the Docsでconfigファイルを設定する必要がある（[参考](https://docs.readthedocs.io/en/stable/config-file/v2.html)）．こうすることで，Read the Docsでのビルド時にパッケージがインストールされる．
+
+```yml
+# .readthedocs.yml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+# Required
+version: 2
+
+# Optionally set the version of Python and requirements required to build your docs
+python:
+  version: 3.7
+  install:
+    - method: pip
+      path: .
+```
+
 ## 1.6 index.htmlの作成
 
-> Read the Docsを使う場合は，この節を無視する．
+> GitHub Pagesを使う場合に必要．
 
 GitHub Pagesは，`docs/`フォルダ内の`index.html`の存在を要求する．よって，`docs/`フォルダ内に`index.html`を作成し，以下の内容を記述する（[参考](https://github.com/sphinx-doc/sphinx/issues/3382#issuecomment-409068915)）．
 
@@ -103,7 +125,7 @@ GitHub Pagesは，`docs/`フォルダ内の`index.html`の存在を要求する�
 
 ## 1.7 .gitignoreの編集
 
-> Read the Docsを使う場合は，この節を無視する．
+> GitHub Pagesを使う場合に必要．
 
 デフォルトのSphinxの設定では，`docs/build/`フォルダ内にHTMLファイルが作成される．しかし，Pythonのデフォルトの`.gitignore`では，`build/`フォルダを無視する．よって，`docs/build/`フォルダのみはバージョン管理に加えたいので，`.gitignore`に以下の文言を追加する．
 
@@ -119,8 +141,10 @@ GitHub Pagesは，`docs/`フォルダ内の`index.html`の存在を要求する�
 
 ## 2.1 GitHub Pagesの設定
 
-レポジトリのSettingsタブ内で，GitHub Pagesの項目を変更する．Sourceにおいて`master branch /docs folder`を選択する．すると，アドレスが指定されるので，そこにアクセスすればHTMLファイルを閲覧できる．
+レポジトリのSettingsタブ内で，GitHub Pagesの項目を変更する．Sourceにおいて`master branch /docs folder`を選択する．すると，アドレスが指定されるので，そこにアクセスすればHTMLファイルを閲覧できる．ただ，現時点ではスタイルがデフォルトのままであり，`conf.py`で設定されたreadthedocsスタイルが適用されない．この点は追加の調査が必要である．
 
 ## 2.2 Read the Docsの設定
 
 [Read the Docsのドキュメント](https://docs.readthedocs.io/en/stable/intro/import-guide.html)を参照しながら，GitHubとRead the Docsを連携させる．
+
+一点注意は，Read the Docs側で設定をいじる必要がある．[このstack overflowの投稿](https://ja.stackoverflow.com/questions/55698/)にあるように，Read the Docsの「高度な設定」項目で，「プロジェクトをインストール」にチェックを入れる．
